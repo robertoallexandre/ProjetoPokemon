@@ -13,24 +13,24 @@
     <main>
       <div class="row">
         <div class="column">
-          <a href="#">Ditto</a>
-          <a href="#">Dratini</a>
-          <a href="#">Charizard</a>
+          <a href="/ditto">Ditto</a>
+          <a href="/dratini">Dratini</a>
+          <a href="/charizard">Charizard</a>
         </div>
-        <table id="table">
+        <table id="table" class="<%= pokemon ? 'show' : 'hide' %>">
           <tr>
-            <td colspan="2"></td>
+            <td colspan="2"> <img src='<%= pokemon ? pokemon.image : '' %> ' /> </td>
           </tr>
           <tr>
             <td>Nome:</td>
-            <td></td>
+            <td><%= pokemon ? pokemon.name : '' %> </td>
           </tr>
           <tr>
             <td>Tipo(s):</td>
-            <td></td>
+            <td><%= pokemon ? pokemon.types : '' %></td>
           </tr>
         </table>
-        <div id="initial"> Selecione um Pokémon </div>
+        <div id="initial" class="<%= pokemon ? 'hide' : 'show' %>"> Selecione um Pokémon </div>
       </div>
     </main>
   </body>
