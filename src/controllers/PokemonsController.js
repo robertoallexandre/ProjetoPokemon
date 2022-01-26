@@ -1,11 +1,21 @@
+const Pokemon =  require('../database/Pokemon')
 
 module.exports = {
     initial(req,res){
-        res.render('index');
+        // Método que monta a tabela na view vazia
+        res.render('index', { pokemon: null });
     },
     
-    show(req,res){
-        res.render('index');
+    async show(req,res){
+        const pokemonRaw = await Pokemon.findByName(req.params.name);
+        // Trata os dados vindos da API e preenche a tabela na view
+        const pokemon = {
+            image: pokemonRaw.sprites.other['official-artwork'].front_default,
+            nome: pokemonRaw.name,
+            tipos: pokemonRaw.types,
+        }
+
+        res.render('index', { pokemon });
     }
 }
 
